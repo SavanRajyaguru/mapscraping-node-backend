@@ -5,6 +5,18 @@ const { status, messages } = require('../../helper/api.responses')
 const { sendMail } = require('../../helper/email.service')
 const { catchError, pick, encryption } = require('../../helper/utilities.services')
 
+async function register(req, res) { 
+    try {
+        const { sEmail, nNumber } = req.body
+        const isDisposableMail = (email) => tempDomains.includes(email.split('@')[1])
+        if (isDisposableMail) { 
+
+        }
+    } catch (error) {
+        return catchError('register', error, res)
+    }
+}
+
 // This is an asynchronous function named 'login' which handles the login request.
 async function login(req, res) {
     try {
@@ -197,5 +209,6 @@ module.exports = {
     changePassword,
     forgotPassword,
     resetPassword,
-    logout
+    logout,
+    register
 }
